@@ -8,7 +8,8 @@ class PhotoSwipe extends React.Component {
     isOpen: React.PropTypes.bool.isRequired,
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
-    onClose: React.PropTypes.func
+    onClose: React.PropTypes.func,
+    onOpen: React.PropTypes.func
   };
   static defaultProps = {
     items: [],
@@ -56,6 +57,9 @@ class PhotoSwipe extends React.Component {
       isOpen: true
     }, () => {
       this.photoSwipe.init();
+      if (this.props.onOpen) {
+        this.props.onOpen(this.photoSwipe);
+      }
     });
   };
 
